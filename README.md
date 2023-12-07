@@ -11,7 +11,6 @@
 - ### __JSX__
 - ### __Props vs State__
 - ### __Conditional Rendering__
-- ### __Rendering__
 - ### __Compositon__
 ---
 ## III. Rendering
