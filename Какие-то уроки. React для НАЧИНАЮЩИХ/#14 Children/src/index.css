@@ -1,0 +1,12 @@
+.hello {
+  background: #862424;
+}
+
+.hello2 {
+  background: #9c7fc2;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-around;
+}
