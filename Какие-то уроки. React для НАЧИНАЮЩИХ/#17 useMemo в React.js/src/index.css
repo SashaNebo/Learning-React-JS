@@ -1,0 +1,7 @@
+.flex {
+  margin: 100px 0 0 200px;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 30px;
+}
