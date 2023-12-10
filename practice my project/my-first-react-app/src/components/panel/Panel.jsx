@@ -5,31 +5,32 @@ import { BsEmojiKiss } from 'react-icons/bs'
 import { BsEmojiSmileUpsideDown } from 'react-icons/bs'
 import { BsEmojiWink } from 'react-icons/bs'
 
-function addToStorage({ target }) {
-  let name = target.closest('.panel__button').dataset.name
+const Panel = ({ setData }) => {
+  function renderEmoji({ target }) {
+    const name = target.closest('.panel__button').dataset.name
 
-  let emojiInfo = {
-    name,
-    id: Date.now(),
+    setData(prev => [
+      ...prev,
+      {
+        name,
+        id: Date.now(),
+      },
+    ])
   }
 
-  console.log(emojiInfo)
-}
-
-const Panel = () => {
   return (
     <div className='panel'>
       <div className='panel__container'>
-        <button className='panel__button' data-name='grin' onClick={addToStorage}>
+        <button className='panel__button' data-name='grin' onClick={renderEmoji}>
           <BsEmojiGrin className='panel__icon' />
         </button>
-        <button className='panel__button' data-name='kiss' onClick={addToStorage}>
+        <button className='panel__button' data-name='kiss' onClick={renderEmoji}>
           <BsEmojiKiss className='panel__icon' />
         </button>
-        <button className='panel__button' data-name='smile' onClick={addToStorage}>
+        <button className='panel__button' data-name='smile' onClick={renderEmoji}>
           <BsEmojiSmileUpsideDown className='panel__icon' />
         </button>
-        <button className='panel__button' data-name='wink' onClick={addToStorage}>
+        <button className='panel__button' data-name='wink' onClick={renderEmoji}>
           <BsEmojiWink className='panel__icon' />
         </button>
       </div>

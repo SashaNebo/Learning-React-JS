@@ -1,17 +1,14 @@
-import React from 'react'
+import React, { Children } from 'react'
 import './index.css'
-import { Block } from '../block/Block'
 
-const Main = () => {
+const Main = ({ children }) => {
   return (
     <main className='main'>
       <div className='main__container'>
-        <div className='main__content'>
-          <Block />
-        </div>
+        <div className='main__content'>{children}</div>
       </div>
     </main>
   )
 }
 
-export default Main
+export { Main }

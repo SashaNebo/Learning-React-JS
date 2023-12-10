@@ -15,21 +15,6 @@
   padding: 0 20px;
 }
 
-.block {
-  justify-self: center;
-  align-self: center;
-  padding: 10px;
-  border-radius: 10px;
-  background-color: #A8DF8E;
-  animation: myAnim 1.5s ease 0s 1 normal forwards;
-}
-
-.block__icon {
-  min-width: 8rem;
-  min-height: 8rem;
-  fill: #fff;
-}
-
 /* Animation */
 
 @keyframes myAnim {
