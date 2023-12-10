@@ -1,0 +1,77 @@
+.main {
+  margin: 100px 0;
+}
+
+.main__container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.main__content {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  row-gap: 5rem;
+  padding: 0 20px;
+}
+
+.block {
+  justify-self: center;
+  align-self: center;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #A8DF8E;
+  animation: myAnim 1.5s ease 0s 1 normal forwards;
+}
+
+.block__icon {
+  min-width: 8rem;
+  min-height: 8rem;
+  fill: #fff;
+}
+
+/* Animation */
+
+@keyframes myAnim {
+  0% {
+    animation-timing-function: ease-in;
+    opacity: 0;
+    transform: translateY(-250px);
+  }
+
+  38% {
+    animation-timing-function: ease-out;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  55% {
+    animation-timing-function: ease-in;
+    transform: translateY(-65px);
+  }
+
+  72% {
+    animation-timing-function: ease-out;
+    transform: translateY(0);
+  }
+
+  81% {
+    animation-timing-function: ease-in;
+    transform: translateY(-28px);
+  }
+
+  90% {
+    animation-timing-function: ease-out;
+    transform: translateY(0);
+  }
+
+  95% {
+    animation-timing-function: ease-in;
+    transform: translateY(-8px);
+  }
+
+  100% {
+    animation-timing-function: ease-out;
+    transform: translateY(0);
+  }
+}
