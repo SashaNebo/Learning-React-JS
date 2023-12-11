@@ -4,16 +4,16 @@ import { BsEmojiKiss } from 'react-icons/bs'
 import { BsEmojiSmileUpsideDown } from 'react-icons/bs'
 import { BsEmojiWink } from 'react-icons/bs'
 
-const Emoji = ({ name }) => {
-  const getGrin = () => <BsEmojiGrin className='block__icon' />
-  const getKiss = () => <BsEmojiKiss className='block__icon' />
-  const getSmile = () => <BsEmojiSmileUpsideDown className='block__icon' />
-  const getWink = () => <BsEmojiWink className='block__icon' />
+const names = {
+  grin: BsEmojiGrin,
+  kiss: BsEmojiKiss,
+  smile: BsEmojiSmileUpsideDown,
+  wink: BsEmojiWink,
+}
 
-  if (name === 'grin') return getGrin()
-  if (name === 'kiss') return getKiss()
-  if (name === 'smile') return getSmile()
-  if (name === 'wink') return getWink()
+const Emoji = ({ name }) => {
+  const EmojiComponent = names[name]
+  return <EmojiComponent className='block__icon' />
 }
 
 export default Emoji

@@ -4,7 +4,7 @@
   padding: 10px;
   border-radius: 10px;
   background-color: #A8DF8E;
-  animation: myAnim 1.5s ease 0s 1 normal forwards;
+  animation: smoothBounce 1.5s ease 0s 1 normal forwards;
 }
 
 .block__icon {
@@ -21,6 +21,52 @@
   animation-duration: 1s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
+}
+
+/* Animation */
+
+@keyframes smoothBounce {
+  0% {
+    animation-timing-function: ease-in;
+    opacity: 0;
+    transform: translateY(-250px);
+  }
+
+  38% {
+    animation-timing-function: ease-out;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  55% {
+    animation-timing-function: ease-in;
+    transform: translateY(-65px);
+  }
+
+  72% {
+    animation-timing-function: ease-out;
+    transform: translateY(0);
+  }
+
+  81% {
+    animation-timing-function: ease-in;
+    transform: translateY(-28px);
+  }
+
+  90% {
+    animation-timing-function: ease-out;
+    transform: translateY(0);
+  }
+
+  95% {
+    animation-timing-function: ease-in;
+    transform: translateY(-8px);
+  }
+
+  100% {
+    animation-timing-function: ease-out;
+    transform: translateY(0);
+  }
 }
 
 @-webkit-keyframes slideOutUp {
@@ -50,6 +96,8 @@
     transform: translateY(-100%);
   }
 }
+
+/* Adaptive */
 
 @media (max-width: 1250px) {
   .block__icon {

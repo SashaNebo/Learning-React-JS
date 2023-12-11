@@ -1,10 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './index.css'
 import Emoji from '../emoji/Emoji'
 
 const Block = ({ data, setData }) => {
-  const name = 'kiss'
-  function f1({ target }) {
+  function removeEmoji({ target }) {
     const currentBlock = target.closest('.block')
     currentBlock.classList.add('block__remove')
 
@@ -15,9 +14,9 @@ const Block = ({ data, setData }) => {
     }, 1000)
   }
 
-  return data.map(e => (
-    <div style={{ background: `#${e.bg}` }} className='block' key={e.id} id={e.id} onClick={f1}>
-      <Emoji fill={e.fill} name={e.name} />
+  return data.map(({ name, id, bg }) => (
+    <div style={{ background: `#${bg}` }} className='block' key={id} id={id} onClick={removeEmoji}>
+      <Emoji name={name} />
     </div>
   ))
 }

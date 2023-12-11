@@ -38,6 +38,8 @@
   transform: translateY(-1rem);
 }
 
+/* Adaptive */
+
 @media (max-width: 750px) {
   .panel {
     max-width: 250px;
