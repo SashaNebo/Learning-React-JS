@@ -1,65 +1,114 @@
-# React JS Learning Plan 
-## __Start 07.12.2023__, __Deadline 31.01.2023__
+# React JS Learning Plan
+
+## **Start 07.12.2023**, **Deadline 31.01.2023**
+
 ---
+
 # Topics to explore
+
 ## I. CLI Tools
-### __Vite, Create React App__
+
+### **Vite, Create React App**
+
 ---
+
 ## II. Components
-### __Functional Components__
-### __Components Basics__
-- ### __JSX__
-- ### __Props vs State__
-- ### __Conditional Rendering__
-- ### __Composition__
+
+### **Functional Components**
+
+### **Components Basics**
+
+- ### **JSX**
+- ### **Props vs State**
+- ### **Conditional Rendering**
+- ### **Composition**
+
 ---
+
 ## III. Rendering
-- ### __Component Life Cycle__
-- ### __Lists and Keys__
-- ### __Render Props__
-- ### __Refs__
-- ### __Events__
-- ### __High Order Components__
+
+- ### **Component Life Cycle**
+- ### **Lists and Keys**
+- ### **Render Props**
+- ### **Refs**
+- ### **Events**
+- ### **High Order Components**
+
 ---
+
 ## IV. Hooks
-### __1. Basic Hooks__
-- ### __useState__
-- ### __useEffect__
-### __2. Writing Custom Hooks__
-### __Common Hooks__
+
+### **1. Basic Hooks**
+
+- ### **useState**
+- ### **useEffect**
+
+### **2. Writing Custom Hooks**
+
+### **Common Hooks**
+
 - ### useCallback
 - ### useRef
 - ### useMemo
 - ### useReducer
 - ### useContext
 - ### ...
+
 ---
+
 ## V. Routers
-### __React Router, Reach Router__
+
+### **React Router, Reach Router**
+
 ---
+
 ## VI. State Management
-### __Recoil, MobX, Redux / Toolkit, Zustand, Context__
+
+### **Recoil, MobX, Redux / Toolkit, Zustand, Context**
+
 ---
-## VII. Styling 
-### __1. Emotion, Styled Components__
-### __2. CSS Modules__
-### __3. Tailwind, Material UI, Mantine, Chakra UI__
+
+## VII. Styling
+
+### **1. Emotion, Styled Components**
+
+### **2. CSS Modules**
+
+### **3. Tailwind, Material UI, Mantine, Chakra UI**
+
 ---
+
 ## VIII. Api Calls
-### __1. Graph QL__
+
+### **1. Graph QL**
+
 ### Apollo, Relay, Urql
-### __2. Rest__
+
+### **2. Rest**
+
 ### SWR, react-query, Axios, superagent, rtk-query
+
 ---
+
 ## IX. Testing
-### __1. Jest, Vitest, React Testing Library__
-### __2. Cypress, Playwright__
+
+### **1. Jest, Vitest, React Testing Library**
+
+### **2. Cypress, Playwright**
+
 ---
+
 ## X. Forms
-### __1. React Hook Form, Formik, Final Form__
-### __2. Advanced Topics__
+
+### **1. React Hook Form, Formik, Final Form**
+
+### **2. Advanced Topics**
+
 - ### Suspense
 - ### Portals
 - ### Error Boundaries
 - ### Fiber Architecture
+
 ---
+
+## Test
