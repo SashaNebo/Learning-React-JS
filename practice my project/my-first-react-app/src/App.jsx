@@ -11,7 +11,7 @@ const App = () => {
       <Main>
         <Block data={data} setData={setData} />
       </Main>
-      <Panel setData={setData} />
+      <Panel data={data} setData={setData} />
     </div>
   )
 }

@@ -1,5 +1,6 @@
 .panel {
-  width: 33.333333%;
+  width: 100%;
+  max-width: 550px;
   position: fixed;
   right: 50%;
   bottom: 5rem;
@@ -35,4 +36,28 @@
 
 .panel__button:hover .panel__icon {
   transform: translateY(-1rem);
+}
+
+@media (max-width: 750px) {
+  .panel {
+    max-width: 250px;
+  }
+
+  .panel__container {
+    display: grid;
+    grid-template-columns: repeat(2, 80px);
+    grid-template-rows: repeat(2, 48px);
+    row-gap: 20px;
+  }
+}
+
+@media (max-width: 300px) {
+  .panel {
+    max-width: 200px;
+  }
+
+  .panel__container {
+    row-gap: 10px;
+    column-gap: 5px;
+  }
 }

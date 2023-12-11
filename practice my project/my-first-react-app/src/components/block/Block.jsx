@@ -1,16 +1,9 @@
 import React, { useState } from 'react'
 import './index.css'
-import { BsEmojiKiss } from 'react-icons/bs'
-
-// const setBg = () => {
-//   const randomColor = Math.floor(Math.random() * 16777215).toString(16)
-//   document.body.style.backgroundColor = '#' + randomColor
-//   color.innerHTML = '#' + randomColor
-// }
+import Emoji from '../emoji/Emoji'
 
 const Block = ({ data, setData }) => {
-  const randomColor = () => Math.floor(Math.random() * 16777215).toString(16)
-
+  const name = 'kiss'
   function f1({ target }) {
     const currentBlock = target.closest('.block')
     currentBlock.classList.add('block__remove')
@@ -22,13 +15,11 @@ const Block = ({ data, setData }) => {
     }, 1000)
   }
 
-  return data.map((e, i) => (
-    <div className='block' key={e.id} id={e.id} onClick={f1}>
-      {<BsEmojiKiss className='block__icon' />}
+  return data.map(e => (
+    <div style={{ background: `#${e.bg}` }} className='block' key={e.id} id={e.id} onClick={f1}>
+      <Emoji fill={e.fill} name={e.name} />
     </div>
   ))
 }
 
-/* <div className='block'>{<BsEmojiKiss className='block__icon' />}</div> */
-// style={{ background: `#${randomColor()}` }}
 export { Block }

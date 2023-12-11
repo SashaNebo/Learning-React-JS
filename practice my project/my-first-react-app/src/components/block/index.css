@@ -8,8 +8,8 @@
 }
 
 .block__icon {
-  min-width: 8rem;
-  min-height: 8rem;
+  min-width: 9rem;
+  min-height: 9rem;
   fill: #fff;
   cursor: pointer;
 }
@@ -48,5 +48,33 @@
     visibility: hidden;
     -webkit-transform: translateY(-100%);
     transform: translateY(-100%);
+  }
+}
+
+@media (max-width: 1250px) {
+  .block__icon {
+    min-width: 10rem;
+    min-height: 10rem;
+  }
+}
+
+@media (max-width: 950px) {
+  .block__icon {
+    min-width: 18vw;
+    min-height: 18vw;
+  }
+}
+
+@media (max-width: 675px) {
+  .block__icon {
+    min-width: 20vw;
+    min-height: 20vw;
+  }
+}
+
+@media (max-width: 285px) {
+  .block__icon {
+    min-width: 30vw;
+    min-height: 30vw;
   }
 }

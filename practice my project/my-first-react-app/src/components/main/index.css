@@ -6,6 +6,7 @@
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
+  padding-bottom: 55vh;
 }
 
 .main__content {
@@ -58,5 +59,37 @@
   100% {
     animation-timing-function: ease-out;
     transform: translateY(0);
+  }
+}
+
+@media (max-width: 1250px) {
+  .main__container {
+    max-width: 950px;
+  }
+
+  .main__content {
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 3rem;
+  }
+}
+
+@media (max-width: 675px) {
+  .main__container {
+    padding-bottom: 48vh;
+  }
+
+  .main__content {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .main__content {
+    row-gap: 1rem;
+    column-gap: 2%;
+  }
+}
+
+@media (max-width: 285px) {
+  .main__content {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
