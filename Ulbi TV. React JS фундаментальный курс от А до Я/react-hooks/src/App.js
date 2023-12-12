@@ -1,23 +1,55 @@
-import React, { useRef, useState } from 'react'
+import React, { useMemo, useRef, useState } from 'react'
 import './styles/App.css'
 import PostList from './components/PostList'
 import PostForm from './components/PostForm'
+import MySelect from './components/UI/select/MySelect'
+import MyInput from './components/UI/input/MyInput'
 
 function App() {
   const [posts, setPosts] = useState([
-    { id: 1, title: 'JavaScript', body: 'JavaScript - язык программирования' },
+    { id: 1, title: 'JavaScript 1', body: 'JavaScript - язык программирования' },
     { id: 2, title: 'JavaScript 2', body: 'JavaScript - язык программирования' },
     { id: 3, title: 'JavaScript 3', body: 'JavaScript - язык программирования' },
   ])
+
+  const [selectedSort, setSelectedSort] = useState('')
+  const [searchQuery, setSearchQuery] = useState('')
+
+  const sortedPosts = useMemo(() => {
+    if (selectedSort) {
+      return [...posts].sort((a, b) => a[selectedSort].localeCompare(b[selectedSort]))
+    }
+    return posts
+  }, [selectedSort, posts])
+
+  const sortedAndSearchedPosts = useMemo(() => {
+    return sortedPosts.filter(post => post.title.toLocaleLowerCase().includes(searchQuery))
+  }, [searchQuery, sortedPosts])
 
   const createPost = newPost => {
     setPosts([...posts, newPost])
   }
 
+  // Callback
+  const sortPosts = sort => {
+    setSelectedSort(sort)
+  }
+
   return (
     <div className='App'>
       <PostForm create={createPost} />
-      {posts.length ? <PostList setPosts={setPosts} posts={posts} title={'Posts About JavaScript '} /> : <h1 style={{ textAlign: 'center' }}>Posts not found!</h1>}
+      <hr style={{ margin: '40px 0' }} />
+      <MyInput type='text' placeholder='Search' value={searchQuery} onChange={({ target }) => setSearchQuery(target.value)} />
+      <MySelect
+        value={selectedSort}
+        onChange={sortPosts}
+        defaultValue='Sorting by'
+        options={[
+          { value: 'title', name: 'By Name' },
+          { value: 'body', name: 'By Description' },
+        ]}
+      />
+      {sortedAndSearchedPosts.length ? <PostList setPosts={setPosts} posts={sortedAndSearchedPosts} title={'Posts About JavaScript '} /> : <h1 style={{ textAlign: 'center' }}>Posts not found!</h1>}
     </div>
   )
 
