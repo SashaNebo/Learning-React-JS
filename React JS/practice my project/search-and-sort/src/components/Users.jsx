@@ -1,58 +1,76 @@
 import React, { useState, useEffect } from 'react'
+import AddUsers from './addUser/AddUsers'
+import Modal from './modal/Modal'
 
 const Users = () => {
   const url = 'https://jsonplaceholder.typicode.com/users'
-  const [staticUsers, setStaticUsers] = useState([])
-  const [adaptiveUsers, setAdaptiveUsers] = useState([])
+  const [Users, setUsers] = useState([])
+  const [filter, setFilter] = useState({ query: '', key: '' })
+  const [modal, setModal] = useState(false)
 
   const requestData = new Promise((resolve, reject) => {
     return fetch(url)
       .then(response => response.json())
       .then(data => resolve(data))
+      .catch(err => reject(err))
   })
 
   useEffect(() => {
-    requestData.then(data => setStaticUsers(data))
-    requestData.then(data => setAdaptiveUsers(data))
+    requestData.then(data => setUsers(data))
   }, [])
 
-  function searchUsers({ value }) {
-    if (value === '') return setAdaptiveUsers([...staticUsers])
+  function sortedUsers() {
+    if (!filter.query) return filteredUsers()
 
-    setAdaptiveUsers(() => {
-      return [...staticUsers].filter(user => {
-        return user.name.toLowerCase().includes(value.toLowerCase())
-      })
+    return filteredUsers().filter(user => {
+      return user.name.toLowerCase().includes(filter.query.toLowerCase())
     })
   }
 
-  function filteredUsers(key) {
-    setAdaptiveUsers(prevUsers => {
-      const sortingByDefault = [...prevUsers].sort((a, b) => a.id < b.id && -1)
-      const sortingByName = [...prevUsers].sort((a, b) => a.name < b.name && -1)
+  function filteredUsers() {
+    if (!filter.key) return Users
 
-      const sortingList = {
-        default: sortingByDefault,
-        name: sortingByName,
-      }
-      return sortingList[key]
-    })
+    const sortingByDefault = [...Users].sort((a, b) => a.id < b.id && -1)
+    const sortingByName = [...Users].sort((a, b) => a.name < b.name && -1)
+
+    const sortingList = {
+      default: sortingByDefault,
+      name: sortingByName,
+    }
+
+    return sortingList[filter.key]
+  }
+
+  useEffect(() => {
+    console.log('Данные изменились, нужно перерисовать')
+  }, [Users, filter.query, filter.key])
+
+  // Modal
+
+  function createUser(e) {
+    e.preventDefault()
+    setModal(prevStatus => !prevStatus)
+    console.log(`Данные получены: ${e.target.value}`)
+    console.log(e.target.value)
   }
 
   return (
     <div className=' m-4'>
       <div>
-        <input onInput={({ target }) => searchUsers(target)} placeholder='search' className='bg-slate-500 p-2' type='search' />
-        <select onChange={({ target }) => filteredUsers(target.value)} className='bg-slate-500 ml-2' name='filter'>
+        <input onInput={({ target }) => setFilter({ ...filter, query: target.value })} placeholder='search' className='bg-slate-500 p-2' type='search' />
+        <select onChange={({ target }) => setFilter({ ...filter, key: target.value })} className='bg-slate-500 ml-2 mr-2' name='filter'>
           <option value='default'>Default</option>
           <option value='name'>Name</option>
         </select>
+
+        <AddUsers setVision={setModal} />
       </div>
-      {adaptiveUsers?.map(user => (
+      {sortedUsers()?.map(user => (
         <p key={user.id}>
           {user.id} - {user.name}
         </p>
       ))}
+      <Modal setVision={setModal} createUser={createUser} vision={modal} />
     </div>
   )
 }
