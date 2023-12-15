@@ -1,7 +1,8 @@
 import React from 'react'
+import Users from './components/Users'
 
 function App() {
-  return <div>start</div>
+  return <Users />
 }
 
 export default App
