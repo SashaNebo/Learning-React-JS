@@ -15,3 +15,34 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.modal__2 {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: rgba(0, 0, 0, .8);
+}
+
+.modal__2.active {
+  display: flex;
+}
+
+.modal__submit {
+  background-color: slategray;
+  padding: 5px;
+  color: #fff;
+}
+
+.modal__container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  padding: 20px;
+  background: rgb(204, 182, 182);
+}

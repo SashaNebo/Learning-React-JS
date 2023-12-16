@@ -7,6 +7,8 @@ const Users = () => {
   const [Users, setUsers] = useState([])
   const [filter, setFilter] = useState({ query: '', key: '' })
   const [modal, setModal] = useState(false)
+  const [modal2, setModal2] = useState(false)
+  const [editUser, setEditUser] = useState({ name: '', id: null })
 
   const requestData = new Promise((resolve, reject) => {
     return fetch(url)
@@ -47,11 +49,38 @@ const Users = () => {
 
   // Modal
 
-  function createUser(e) {
-    e.preventDefault()
+  function createUser(newUser) {
+    setUsers(prevUsers => [...prevUsers, newUser])
     setModal(prevStatus => !prevStatus)
-    console.log(`Данные получены: ${e.target.value}`)
-    console.log(e.target.value)
+  }
+
+  // Remove Edit
+
+  function removeUser(id) {
+    setUsers(prevUsers => {
+      return prevUsers.filter(user => user.id !== id)
+    })
+  }
+
+  function userInfo(userId) {
+    setModal2(true)
+    setEditUser({ ...editUser, id: userId })
+  }
+
+  function editUserInfo(e) {
+    e.preventDefault()
+
+    setUsers(prevUsers => {
+      return prevUsers.map(user => {
+        if (user.id === editUser.id) {
+          return { ...user, name: editUser.name }
+        }
+        return user
+      })
+    })
+
+    setEditUser({ name: '', id: null })
+    setModal2(prevStatus => !prevStatus)
   }
 
   return (
@@ -65,12 +94,26 @@ const Users = () => {
 
         <AddUsers setVision={setModal} />
       </div>
-      {sortedUsers()?.map(user => (
-        <p key={user.id}>
-          {user.id} - {user.name}
+      {sortedUsers()?.map((user, i) => (
+        <p key={user.id} className='mt-5'>
+          {++i} - {user.name} - {user.id}
+          <button onClick={() => removeUser(user.id)} className=' bg-lime-600 ml-8'>
+            delete
+          </button>
+          <button onClick={() => userInfo(user.id)} className=' bg-sky-500 ml-8'>
+            edit
+          </button>
         </p>
       ))}
       <Modal setVision={setModal} createUser={createUser} vision={modal} />
+      <div onClick={() => setModal2(false)} className={`modal__2 ${modal2 && 'active'}`}>
+        <form onClick={e => e.stopPropagation()} className='modal__container'>
+          <input onInput={({ target }) => setEditUser({ ...editUser, name: target.value })} value={editUser.name} type='text' required />
+          <button onClick={editUserInfo} className='modal__submit' type='submit'>
+            edit
+          </button>
+        </form>
+      </div>
     </div>
   )
 }
