@@ -4,14 +4,13 @@
   bottom: 0;
   right: 0;
   left: 0;
-  /* display: none; */
+  display: none;
   background: rgba(0, 0, 0, .3);
-  display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.modal.active {
+.active {
   display: flex;
   justify-content: center;
   align-items: center;

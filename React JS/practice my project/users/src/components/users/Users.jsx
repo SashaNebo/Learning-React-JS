@@ -1,10 +1,17 @@
 import React from 'react'
 import './users.css'
+import UserTop from '../user/UserTop'
+import User from '../user/User'
 
-const Users = ({ children }) => {
+const Users = ({ sortedUsers, showModal, removeUser }) => {
   return (
     <div className='users'>
-      <div className='users__content'>{children}</div>
+      <div className='users__content'>
+        <UserTop />
+        {sortedUsers()?.map((user, i) => (
+          <User removeUser={removeUser} showModal={showModal} userName={user.name} userId={user.id} userNumber={user.number} userIndex={i} key={user.id} />
+        ))}
+      </div>
     </div>
   )
 }
