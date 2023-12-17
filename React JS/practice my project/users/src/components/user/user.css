@@ -1,0 +1,10 @@
+.user {
+  display: grid;
+  grid-template-columns: 25% 25% 25% auto;
+  align-items: center;
+}
+
+.user__buttons {
+  display: flex;
+  justify-content: space-between;
+}
