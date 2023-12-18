@@ -3,9 +3,11 @@ import React from 'react'
 const UserTop = () => {
   return (
     <div className='user'>
-      <div>Index</div>
-      <div>Name</div>
-      <div title='History adding'>Number</div>
+      <div className='user__index'>Index</div>
+      <div className='user__name'>Name</div>
+      <div className='user__number' title='History adding'>
+        Number
+      </div>
     </div>
   )
 }

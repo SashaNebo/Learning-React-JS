@@ -4,9 +4,9 @@ import './user.css'
 const User = ({ showModal, removeUser, userName, userId, userNumber, userIndex }) => {
   return (
     <div className='user'>
-      <div>{++userIndex}</div>
-      <div>{userName}</div>
-      <div>{userNumber}</div>
+      <div className='user__index'>{++userIndex}</div>
+      <div className='user__name'>{userName}</div>
+      <div className='user__number'>{userNumber}</div>
       <div className='user__buttons'>
         <button onClick={({ target }) => showModal(target, userId)} className='button w-2/5' id='edit'>
           Edit
