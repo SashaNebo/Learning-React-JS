@@ -26,9 +26,9 @@ function App() {
   function filteredUsers() {
     if (!filter.key) return users
 
-    const sortingByName = [...users].sort((a, b) => a.name < b.name && -1)
-    const sortingByNumberHigh = [...users].sort((a, b) => b.number - a.number)
-    const sortingByDefault = [...users].sort((a, b) => a.number - b.number)
+    const sortingByName = () => [...users].sort((a, b) => a.name < b.name && -1)
+    const sortingByNumberHigh = () => [...users].sort((a, b) => b.number - a.number)
+    const sortingByDefault = () => [...users].sort((a, b) => a.number - b.number)
 
     const sortingList = {
       name: sortingByName,
@@ -36,7 +36,7 @@ function App() {
       default: sortingByDefault,
     }
 
-    return sortingList[filter.key]
+    return sortingList[filter.key]()
   }
 
   function showModal(target, id) {
