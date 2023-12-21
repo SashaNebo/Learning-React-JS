@@ -5,39 +5,17 @@ import Header from './components/header/Header'
 import { staticUsers } from './components/users/staticUsers'
 import Users from './components/users/Users'
 import Modal from './components/UI/modal/Modal'
+import { useUsers } from './hooks/useUsers'
 
 function App() {
   const [users, setUsers] = useState([])
   const [filter, setFilter] = useState({ query: '', key: '' })
   const [modal, setModal] = useState({ vision: false, formId: null, userId: null, name: '' })
+  const sortedUsers = useUsers(users, filter.key, filter.query)
 
   useEffect(() => {
     setUsers(staticUsers)
   }, [])
-
-  function sortedUsers() {
-    if (!filter.query) return filteredUsers()
-
-    return filteredUsers().filter(user => {
-      return user.name.toLowerCase().includes(filter.query.toLowerCase())
-    })
-  }
-
-  function filteredUsers() {
-    if (!filter.key) return users
-
-    const sortingByName = () => [...users].sort((a, b) => a.name < b.name && -1)
-    const sortingByNumberHigh = () => [...users].sort((a, b) => b.number - a.number)
-    const sortingByDefault = () => [...users].sort((a, b) => a.number - b.number)
-
-    const sortingList = {
-      name: sortingByName,
-      numberHigh: sortingByNumberHigh,
-      default: sortingByDefault,
-    }
-
-    return sortingList[filter.key]()
-  }
 
   function showModal(target, id) {
     setModal({ vision: true, formId: target.id, userId: id || null, name: '' })
