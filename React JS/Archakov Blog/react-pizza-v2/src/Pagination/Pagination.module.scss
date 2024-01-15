@@ -1,0 +1,10 @@
+.root {
+  display: flex;
+  justify-content: space-between;
+
+  a {
+    padding: 10px;
+    background-color: rgb(222, 238, 252);
+    cursor: pointer;
+  }
+}
