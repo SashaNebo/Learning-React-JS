@@ -1,33 +1,38 @@
 import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useSelector, useDispatch } from 'react-redux'
 import qs from 'qs'
 
 import HomeFulfilled from './homeComponents/HomeFulfilled'
 import HomePending from './homeComponents/HomePending'
 import HomeRejected from './homeComponents/HomeRejected'
 
-import { requestData, selectorRequest } from '../../store/slices/requestSlice'
-import { selectorWindow, setScroll } from '../../store/slices/windowSlice'
-import { selectorParams } from '../../store/slices/paramsSlice'
-import { selectorPagination } from '../../store/slices/paginationSlice'
+import { useAppDispatch, useAppSelector } from '../../hooks/redux'
+import { requestData} from '../../store/slices/requestSlice'
+import { setScroll } from '../../store/slices/windowSlice'
+
 
 const Home: React.FC = () => {
   const navigate = useNavigate()
-  const dispatch = useDispatch()
-  const { status } = useSelector(selectorRequest)
-  const params = useSelector(selectorParams)
-  const { page } = useSelector(selectorPagination)
-  const { scrollY } = useSelector(selectorWindow)
+  const dispatch = useAppDispatch()
+  const { status } = useAppSelector(state => state.request)
+  const { page, limit } = useAppSelector(state => state.pagination)
+  const { search, category } = useAppSelector(state => state.params)
+  const { scrollY } = useAppSelector(state => state.window)
 
-  const HomeList = {
+  type HomeListType = {
+    [success: string]: React.FC<{}>
+    loading: React.FC<{}>
+    error: React.FC<{}>
+  }
+
+  const HomeList: HomeListType = {
     success: HomeFulfilled,
     loading: HomePending,
     error: HomeRejected,
   }
 
   const requestDataFromServer = () => {
-    dispatch(requestData({ ...params, page }))
+    dispatch(requestData({ page, limit }))
   }
 
   useEffect(() => {
@@ -35,12 +40,9 @@ const Home: React.FC = () => {
   }, [page])
 
   useEffect(() => {
-    const queryString = qs.stringify({
-      page,
-    })
-
+    const queryString = qs.stringify({ page, category, search })
     navigate(`?${queryString}`)
-  }, [page])
+  }, [page, category, search])
 
   useEffect(() => {
     window.scrollTo(0, scrollY)

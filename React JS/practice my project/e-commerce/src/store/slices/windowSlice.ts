@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { StoreType } from '../../types/storeTypes/store'
+import { RootState } from '../index'
 
 const initialState = {
   scrollX: 0,
@@ -16,6 +16,6 @@ const windowSlice = createSlice({
   },
 })
 
-export const selectorWindow = (state: StoreType) => state.window
+export const selectorWindow = (state: RootState) => state.window
 export const { setScroll } = windowSlice.actions
 export default windowSlice.reducer

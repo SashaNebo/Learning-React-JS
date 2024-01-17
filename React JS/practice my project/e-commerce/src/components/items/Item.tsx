@@ -12,7 +12,7 @@ const Item: React.FC<DataRequestType> = ({ ...itemData }) => {
       <div className='animation min-h-40 flex justify-between flex-col p-5 rounded-xl bg-cyan-500 shadow-lg shadow-cyan-500/80 hover:-translate-y-2 transition-transform'>
         <div className='flex flex-col gap-y-4'>
           <div className='text-large'>{`${id}`}</div>
-          <div className='font-bold text-white'>{price}</div>
+          <div className='font-bold text-white'>${price}</div>
           <div className='font-bold text-white'>{title}</div>
           <div className='font-bold text-white'>{category}</div>
 

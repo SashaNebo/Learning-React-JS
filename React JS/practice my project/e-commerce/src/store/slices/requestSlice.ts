@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { DataRequestType, ParamsRequestType } from '../../types/storeTypes/request'
-import { StoreType } from '../../types/storeTypes/store'
+import { RootState } from '../index'
 import { AsyncThunk } from '@reduxjs/toolkit'
 
 interface DataState {
@@ -50,6 +50,6 @@ const requestSlice = createSlice({
   },
 })
 
-export const selectorRequest = (state: StoreType) => state.request
+export const selectorRequest = (state: RootState) => state.request
 export const {} = requestSlice.actions
 export default requestSlice.reducer

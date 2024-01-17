@@ -1,16 +1,16 @@
 import React from 'react'
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md'
 
-import { useSelector, useDispatch } from 'react-redux'
-import { selectorPagination, setPage, setPagesArray } from '../../store/slices/paginationSlice'
+import { setPage, setPagesArray } from '../../store/slices/paginationSlice'
 import { setScroll } from '../../store/slices/windowSlice'
+import { useAppDispatch, useAppSelector } from '../../hooks/redux'
 
 const Pagination: React.FC = () => {
-  const dispatch = useDispatch()
-  const { page, pagesArray } = useSelector(selectorPagination)
+  const dispatch = useAppDispatch()
+  const { page, pagesArray } = useAppSelector(state => state.pagination)
   
   const changePage = (page:number, pageEvent:string) => {
-    dispatch(setScroll(window.innerHeight))
+    dispatch(setScroll(window.scrollY))
     dispatch(setPage({ page, pageEvent }))
     dispatch(setPagesArray())
   }

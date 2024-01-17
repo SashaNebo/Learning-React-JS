@@ -1,8 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { StoreType } from '../../types/storeTypes/store'
+import { RootState } from '../index'
 
-const initialState = {
+interface PaginationState {
+  page: number
+  limit: number
+  pageList: number
+  pagesArray: number[]
+}
+
+const initialState: PaginationState = {
   page: 1,
+  limit: 10,
   pageList: 1,
   pagesArray: [1, 2, 3],
 }
@@ -44,6 +52,6 @@ const paginationSlice = createSlice({
   },
 })
 
-export const selectorPagination = (state: StoreType) => state.pagination
+export const selectorPagination = (state: RootState) => state.pagination
 export const { setPage, setPagesArray } = paginationSlice.actions
 export default paginationSlice.reducer

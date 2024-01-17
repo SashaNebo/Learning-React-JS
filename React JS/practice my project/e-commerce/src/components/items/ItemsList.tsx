@@ -1,15 +1,18 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
 
 import Item from './Item'
-import { selectorRequest } from '../../store/slices/requestSlice'
+import { DataRequestType } from '../../types/storeTypes/request'
+import getFilteredData from '../../helpers/filteredData'
+import { useAppSelector } from '../../hooks/redux'
 
 const ItemsList: React.FC = () => {
-  const { data } = useSelector(selectorRequest)
-
+  const { data } = useAppSelector(state => state.request)
+  const { category, search } = useAppSelector(state => state.params)
+  const filteredData: DataRequestType[] = getFilteredData(data, category, search)
+  
   return (
     <div className='grid grid-cols-2 gap-4'>
-      {data?.map(obj => (
+      {filteredData?.map(obj => (
         <Item {...obj} key={obj.id} />
       ))}
     </div>

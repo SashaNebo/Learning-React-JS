@@ -13,9 +13,8 @@ export type DataRequestType = {
 }
 
 export type ParamsRequestType = {
-  search: string
-  category: string
   page: number
+  limit: number
 }
 
 /* 

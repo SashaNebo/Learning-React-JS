@@ -1,17 +1,24 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { StoreType } from '../../types/storeTypes/store'
+import { RootState } from '../index'
 
 const initialState = {
   search: '',
-  category: '',
+  category: 'default',
 }
 
 const paramsSlice = createSlice({
   name: 'params',
   initialState,
-  reducers: {}
+  reducers: {
+    setCategory(state, action) {
+      state.category = action.payload
+    },
+    setSearch(state, action) {
+      state.search = action.payload
+    }
+  }
 })
 
-export const selectorParams = (state: StoreType) => state.params
-export const { } = paramsSlice.actions
+export const selectorParams = (state: RootState) => state.params
+export const { setCategory, setSearch } = paramsSlice.actions
 export default paramsSlice.reducer
