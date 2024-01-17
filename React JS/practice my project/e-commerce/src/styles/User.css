@@ -1,0 +1,58 @@
+.title {
+  font-size: 34px;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 1px;
+  color: #000;
+  text-align: center;
+}
+
+.link {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: #fff;
+  background-color: rgb(37 99 235);
+  padding: 8px 14px;
+  border-radius: 8px;
+  transition: background-color .1s linear;
+}
+
+.link:hover {
+  background-color: rgb(30 64 175);
+}
+
+.text-large {
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.text {
+  color:rgb(28 25 23);
+  font-weight: 500;
+  text-transform: capitalize;
+  line-height: 1.2;
+  letter-spacing: 1px;
+}
+
+.animation {
+  animation: smoothRender .25s linear;
+}
+
+@keyframes smoothRender {
+  0% {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+
+  50% {
+    opacity: .5;
+    transform: translateY(-50px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
